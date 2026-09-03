@@ -20,6 +20,8 @@ npm run preview
 
 开发地址通常为 http://127.0.0.1:5173/ 。`dist/` 为可部署的静态网站。
 
+此电脑已安装项目依赖。在 PowerShell 运行 `./start-preview.ps1` 可自动找到系统或 Codex 自带的 Node.js 并启动预览。
+
 ## 已完成
 
 - 全屏 Hero：本地 MP4 背景、静态封面回退、静音循环、暂停/播放、尊重系统减少动态效果设置。
@@ -37,7 +39,7 @@ npm run preview
 - `public/assets/portrait.jpg`：简历中提取的头像。
 - `public/assets/hero-sculpture.png` 与 `hero-loop.mp4`：首页封面与 12 秒无声视频。
 - `public/assets/project-babao.png`、`project-village.png`：两张临时项目封面。
-- `public/og.png`：社交预览图。部署后可在 `index.html` 配置使用实际域名的 Open Graph / X 图片绝对地址。
+- `public/og.png`：社交预览图。当前 Open Graph / X 图片地址指向本地预览；获准上线后，在 `index.html` 改为实际部署域名的绝对地址。
 
 ## 内容来源与待补充
 
@@ -47,6 +49,6 @@ npm run preview
 
 首页 MP4 为基于 AI 雕塑图制作的缓慢镜头运动循环。图片与视频均已本地保存，网站不需要图像生成服务或 API 密钥。
 
-替换作品原图时，在 `src/content.js` 更新 `image`、`imageAlt`、`imageNote`、`note` 以及项目角色和过程信息即可。增加项目后也应同步更新分类数量。
+替换作品原图时，在 `src/content.js` 更新 `image`、`imageAlt`、`imageNote`、`note` 以及项目角色和过程信息即可。分类数量会自动计算。
 
 字体：Barlow Condensed、Manrope，采用 SIL Open Font License。授权文件保存在 `public/assets/fonts/`。
