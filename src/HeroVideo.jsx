@@ -23,16 +23,16 @@ export default function HeroVideo() {
       className="hero-ripple-canvas"
     />
     <DotGrid
-      dotSize={3.5}
-      gap={27}
+      dotSize={4.8}
+      gap={22}
       baseColor="#79a9c4"
       activeColor="#b52a35"
-      proximity={145}
-      speedTrigger={130}
-      shockRadius={230}
-      shockStrength={3.6}
-      maxSpeed={2200}
-      returnDuration={1.4}
+      proximity={190}
+      speedTrigger={85}
+      shockRadius={300}
+      shockStrength={5.4}
+      maxSpeed={2600}
+      returnDuration={1.7}
       className="hero-dot-grid"
     />
     <span className="hero-interaction-note">MOVE · CLICK · DISTORT THE GRID</span>
