@@ -1,4 +1,5 @@
 import HalftoneReveal from './HalftoneReveal.jsx';
+import DotGrid from './DotGrid.jsx';
 
 export default function HeroVideo() {
   return <div className="hero-media hero-ripple">
@@ -21,6 +22,19 @@ export default function HeroVideo() {
       borderRadius="0"
       className="hero-ripple-canvas"
     />
-    <span className="hero-interaction-note">MOVE TO REVEAL · HALFTONE FIELD</span>
+    <DotGrid
+      dotSize={3.5}
+      gap={27}
+      baseColor="#79a9c4"
+      activeColor="#b52a35"
+      proximity={145}
+      speedTrigger={130}
+      shockRadius={230}
+      shockStrength={3.6}
+      maxSpeed={2200}
+      returnDuration={1.4}
+      className="hero-dot-grid"
+    />
+    <span className="hero-interaction-note">MOVE · CLICK · DISTORT THE GRID</span>
   </div>;
 }
