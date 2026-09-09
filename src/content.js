@@ -1,4 +1,4 @@
-// 真实履历来自用户提供的中文简历。作品原图补充后，替换 image 和 imageNote 即可。
+// 履历来自用户简历；三个精选项目来自用户提供的原始作品展板。
 export const profile = {
   name: '顾邱宜', englishName: 'QIUYI GU',
   email: 'qiuyi.067@outlook.com', phone: '+86 198 1815 9967',
@@ -13,31 +13,62 @@ export const experiences = [
 
 export const projects = [
   {
-    id: 'babao', number: '01', title: '八宝汤 · 让产品被看见', english: 'A TASTE OF EVERYDAY', category: '品牌传播', year: '2025',
-    image: '/assets/project-babao.png', imageAlt: '八宝汤项目的 AI 包装概念示意封面，非实际项目作品', imageNote: 'AI 概念封面 · 非项目原图',
-    tags: ['品牌传播', '产品视频'], className: 'project-featured',
-    subtitle: '以影像传递产品的日常温度。',
-    description: '在南浔区融媒体中心实习期间参与八宝汤产品推广视频制作。将产品信息转化为可被感知的画面，通过镜头组织、剪辑节奏与视听包装完成内容表达。',
-    role: '拍摄与后期制作', scope: '素材整理、剪辑、转场、字幕、调色及音效',
-    note: '项目经历来自个人简历。当前包装图为本网站制作的 AI 概念封面，不代表原项目包装设计或最终成果；项目原片与过程资料待补充。',
+    id: 'huyingji', number: '01', title: '《湖颖记》', english: 'HU YING JI', category: '书籍设计', discipline: 'BOOK DESIGN',
+    image: '/assets/huyingji/cover.webp', imageAlt: '《湖颖记》书籍内页与分册实物细节', imageNote: '书籍装帧 · 四折页设计',
+    tags: ['书籍设计', '湖笔非遗', '蝴蝶精装'], className: 'project-featured project-huyingji', coverClassName: 'huyingji-photo-cover', showCoverTitle: false,
+    subtitle: '湖笔技艺的全景人文志。',
+    description: '以湖笔非遗文化为核心，关注传统手工艺的存续，让湖笔的匠心与文脉以鲜活的方式被看见、被感知、被传承。作品采用四折叠开合装帧结构，以四大篇章串联湖笔的历史、材料、技艺与使用，在翻阅中连接传统工艺与现代阅读。',
+    role: '书籍设计', scope: '装帧结构、封面设计、内页编排与整体视觉系统',
+    facts: [
+      { label: '设计方向', value: '书籍装帧 / 非遗文化' },
+      { label: '书籍规格', value: '110 × 230 mm · 90 页' },
+      { label: '装帧方式', value: '四折叠开合 · 蝴蝶精装' },
+      { label: '视觉语言', value: '绿色与粉色 · 网点纹理 · 图文编排' },
+    ],
+    gallery: [
+      { src: '/assets/huyingji/01.webp', title: '设计理念与封面', description: '设计说明、书籍信息与整体装帧展示', width: 1900, height: 2688 },
+      { src: '/assets/huyingji/02.webp', title: '内页设计 · 壹', description: '湖笔文化、材料与图文编排', width: 1900, height: 2686 },
+      { src: '/assets/huyingji/03.webp', title: '内页设计 · 贰', description: '制笔工序、书法文化与阅读节奏', width: 1900, height: 2686 },
+      { src: '/assets/huyingji/04.webp', title: '装帧细节与亮点', description: '四折页结构、分册设计与便携收藏', width: 1900, height: 2686 },
+    ],
   },
   {
-    id: 'village', number: '02', title: '美丽乡村 · 看见在地日常', english: 'STORIES OF A PLACE', category: '动态影像', year: '2025',
-    image: '/assets/project-village.png', imageAlt: '江南水乡清晨的 AI 场景示意图，非项目实拍画面', imageNote: 'AI 场景示意 · 非项目实拍',
-    tags: ['宣传影像', '影像叙事'], className: '',
-    subtitle: '把真实的地方，讲成动人的故事。',
-    description: '在南浔区融媒体中心实习期间参与“美丽乡村”宣传片的实地拍摄与后期制作。围绕在地场景组织镜头，以剪辑、调色和声音塑造完整的叙事节奏。',
-    role: '实地拍摄与后期制作', scope: '素材粗剪、转场、字幕、调色、音效及 AE 包装',
-    note: '项目经历来自个人简历。当前水乡画面为本网站制作的 AI 场景示意，不是本人实拍素材；完整影片与过程资料待补充。',
+    id: 'xunyangji', number: '02', title: '《浔羊记》', english: 'XUN YANG JI', category: '包装设计', discipline: 'PACKAGING DESIGN',
+    image: '/assets/xunyangji/cover.webp', imageAlt: '《浔羊记》包装合照，展示鲜羊排、鲜羊腿异形盒及三款调料包装', imageNote: '品牌包装 · 仿生异形盒',
+    tags: ['包装设计', '品牌视觉', '地域文化'], className: 'project-xunyangji', coverClassName: 'xunyangji-cover', showCoverTitle: false,
+    subtitle: '寻一口鲜香，品一口湖羊。',
+    description: '围绕南浔湖羊肉的地域特色，构建具有江南烟火气的品牌包装。标志结合棱角木刻宋体与传统回纹，搭配拓印质感插画、米色底与红色主视觉，表达“浔乡本味、烟火匠心、江南鲜羊”的品牌核心。以羊排、羊腿的原生肉型设计仿生异形天地盖纸盒，配合趣味谐音文案和分色调料包装，让品牌识别、包装结构与产品风味相互呼应。',
+    role: '包装设计', scope: '品牌定位、标志与辅助图形、包装结构、刀版设计及实物呈现',
+    facts: [
+      { label: '设计方向', value: '南浔湖羊肉品牌包装' },
+      { label: '包装结构', value: '仿生异形天地盖纸盒 · 调料三角折盒' },
+      { label: '视觉语言', value: '木刻字体 · 拓印插画 · 风味分色' },
+      { label: '系列内容', value: '鲜羊排、鲜羊腿包装及三款风味调料包装' },
+    ],
+    gallery: [
+      { src: '/assets/xunyangji/01.webp', title: '品牌建设与视觉系统', description: '品牌定位、故事、标志、设计配色与辅助图形', width: 1900, height: 2688 },
+      { src: '/assets/xunyangji/02.webp', title: '包装结构与刀版设计', description: '鲜羊排、鲜羊腿及三款调料包装的刀版与效果展示', width: 1900, height: 2686 },
+      { src: '/assets/xunyangji/03.webp', title: '实物呈现与设计细节', description: '仿生异形盒、趣味文案、配套小卡与调料折盒', width: 1900, height: 2686 },
+    ],
   },
   {
-    id: 'form', number: '03', title: '形态之间 · AI 视觉探索', english: 'FORM, IN MOTION', category: 'AI 探索', year: '2026',
-    image: '/assets/hero-sculpture.png', imageAlt: '橙色流动雕塑环的 AI 视觉实验', imageNote: '网站视觉实验 · AI 生成',
-    tags: ['AI 视觉', '形态实验'], className: 'project-ai',
-    subtitle: '在材质、光线与想象之间寻找可能。',
-    description: '为本次个人网站搭建制作的视觉方向实验，以橙红色流动形态、近黑背景与电影感光线探索科技与感性的交集，同时作为首页动态视觉的基础素材。',
-    role: '网站概念视觉展示', scope: 'AI 图像生成、视觉方向探索、动态背景呈现',
-    note: '此项为搭建网站时生成的展示素材，不作为既有客户项目或本人过往获奖作品。后续可替换为个人 AI 创作案例。',
+    id: 'zilicangwu', number: '03', title: '《字里藏误》', english: 'ERRORS IN THE CHARACTERS', category: '信息可视化设计', discipline: 'INFORMATION DESIGN',
+    image: '/assets/zilicangwu/cover.webp', imageAlt: '《字里藏误》主题展板，包含404标题、错别字类型与音近错误图表', imageNote: '信息可视化 · 汉字书写',
+    tags: ['信息可视化', '图表设计', '汉字文化'], className: 'project-zilicangwu', coverClassName: 'zilicangwu-cover', showCoverTitle: false,
+    subtitle: '看见日常书写中，被忽略的错误。',
+    description: '聚焦日常汉字书写与数字输入中的错别字现象，以音近错误、形近错误和结构错误为三条叙事线索，组织错误分类、人群分布、主要原因与发生场景。通过流向图、条形图、饼图等图表建立信息之间的关系，结合“404”像素字、黑灰红配色与荧光绿强调，让容易被忽视的书写细节成为可阅读、可比较的视觉信息。',
+    role: '信息可视化设计', scope: '信息分类、图表设计、视觉层级与系列展板编排',
+    facts: [
+      { label: '设计主题', value: '日常书写与数字输入中的错别字' },
+      { label: '内容结构', value: '音近错误 · 形近错误 · 结构错误' },
+      { label: '呈现方式', value: '流向图、条形图、饼图与信息分类图' },
+      { label: '视觉语言', value: '404 像素字 · 黑灰红 · 荧光绿强调' },
+    ],
+    gallery: [
+      { src: '/assets/zilicangwu/01.webp', title: '主题概览与音近错误', description: '主题视觉、主要错误类型、音近错误的分类、人群与原因', width: 1900, height: 2688 },
+      { src: '/assets/zilicangwu/02.webp', title: '形近错误', description: '数字输入与传统书写中的形近字混淆、人群分布与发生场景', width: 1900, height: 2686 },
+      { src: '/assets/zilicangwu/03.webp', title: '结构错误', description: '笔画、部件与整体结构的错误分类，以及人群、场景与原因分析', width: 1900, height: 2686 },
+    ],
   },
 ];
 
