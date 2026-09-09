@@ -52,6 +52,7 @@ export default function DotGrid({
     context.clearRect(0, 0, width, height);
     const pointer = pointerRef.current;
     const proximitySquared = proximity * proximity;
+    const time = reducedRef.current ? 0 : performance.now() * 0.001;
 
     dotsRef.current.forEach(dot => {
       const dx = dot.cx - pointer.x;
@@ -65,8 +66,10 @@ export default function DotGrid({
         const b = Math.round(baseRgb.b + (activeRgb.b - baseRgb.b) * amount);
         color = `rgb(${r}, ${g}, ${b})`;
       }
+      const ambientX = reducedRef.current ? 0 : Math.sin(time * 1.55 + dot.cx * 0.018 + dot.cy * 0.009) * 4.8;
+      const ambientY = reducedRef.current ? 0 : Math.cos(time * 1.25 + dot.cx * 0.01 - dot.cy * 0.016) * 3.6;
       context.save();
-      context.translate(dot.cx + dot.xOffset, dot.cy + dot.yOffset);
+      context.translate(dot.cx + dot.xOffset + ambientX, dot.cy + dot.yOffset + ambientY);
       context.fillStyle = color;
       context.fill(circlePath);
       context.restore();
@@ -146,6 +149,10 @@ export default function DotGrid({
     }, { rootMargin: '80px' });
     visibilityObserver.observe(wrapper);
 
+    const ambientTimer = window.setInterval(() => {
+      if (visibleRef.current && !document.hidden && !reducedRef.current) requestDraw();
+    }, 56);
+
     let moveFrame = 0;
     const onPointerMove = event => {
       if (!visibleRef.current || reducedRef.current || moveFrame) return;
@@ -214,6 +221,7 @@ export default function DotGrid({
     return () => {
       resizeObserver.disconnect();
       visibilityObserver.disconnect();
+      window.clearInterval(ambientTimer);
       window.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('pointerdown', onPointerDown);
       document.removeEventListener('visibilitychange', onVisibilityChange);
