@@ -30,6 +30,8 @@ export default function App() {
     catch { setCopyState('error'); }
   }
   useLayoutEffect(() => {
+    let handleHashChange;
+    let handlePageShow;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const motionMedia = gsap.matchMedia();
     const context = gsap.context(() => {
@@ -66,30 +68,64 @@ export default function App() {
       gsap.utils.toArray('.section').forEach(section => {
         const ghostTitle = section.querySelector('.section-ghost-title');
         const sectionTop = section.querySelector('.section-top');
-        const leadHeading = section.querySelector('.about-copy > h2, .work-heading > h2, .expertise-heading > h2, .contact-lead');
-        const cards = section.querySelectorAll('.portrait, .award-strip, .secondary-awards, .project-card, .capability, .toolbox, .email-row, .contact-info');
+        const leadHeading = section.querySelector('.about-copy > h2, .work-heading > h2, .expertise-heading > h2');
+        const cards = section.querySelectorAll('.portrait, .award-strip, .secondary-awards, .project-card, .capability, .toolbox');
 
         if (ghostTitle) {
           gsap.fromTo(ghostTitle,
             { xPercent: -38, scaleX: 1.35, opacity: 0 },
-            { xPercent: 0, scaleX: 1, opacity: 1, duration: 1.7, ease: 'expo.out', scrollTrigger: { trigger: section, start: 'top 82%', once: true } });
+            { xPercent: 0, scaleX: 1, opacity: 1, duration: 1.7, ease: 'expo.out', immediateRender: false, scrollTrigger: { trigger: section, start: 'top 82%', once: true } });
         }
         if (sectionTop) {
           gsap.fromTo(sectionTop,
             { y: 54, clipPath: 'inset(100% 0 0 0)' },
-            { y: 0, clipPath: 'inset(0% 0 0 0)', duration: 1.15, ease: 'power4.out', scrollTrigger: { trigger: sectionTop, start: 'top 88%', once: true } });
+            { y: 0, clipPath: 'inset(0% 0 0 0)', duration: 1.15, ease: 'power4.out', immediateRender: false, scrollTrigger: { trigger: sectionTop, start: 'top 88%', once: true } });
         }
         if (leadHeading) {
           gsap.fromTo(leadHeading,
             { y: 100, scaleY: 0.65, clipPath: 'inset(100% 0 0 0)', transformOrigin: 'bottom left' },
-            { y: 0, scaleY: 1, clipPath: 'inset(0% 0 0 0)', duration: 1.45, ease: 'expo.out', scrollTrigger: { trigger: leadHeading, start: 'top 88%', once: true } });
+            { y: 0, scaleY: 1, clipPath: 'inset(0% 0 0 0)', duration: 1.45, ease: 'expo.out', immediateRender: false, scrollTrigger: { trigger: leadHeading, start: 'top 88%', once: true } });
         }
         if (cards.length) {
           gsap.fromTo(cards,
             { y: 92, clipPath: 'inset(0 0 100% 0)' },
-            { y: 0, clipPath: 'inset(0 0 0% 0)', duration: 1.25, stagger: 0.13, ease: 'power4.out', scrollTrigger: { trigger: cards[0], start: 'top 88%', once: true }, onComplete: () => gsap.set(cards, { clearProps: 'clipPath,transform' }) });
+            { y: 0, clipPath: 'inset(0 0 0% 0)', duration: 1.25, stagger: 0.13, ease: 'power4.out', immediateRender: false, scrollTrigger: { trigger: cards[0], start: 'top 88%', once: true }, onComplete: () => gsap.set(cards, { clearProps: 'clipPath,transform' }) });
         }
       });
+
+      const contactItems = gsap.utils.toArray('#contact .contact-lead, #contact h2, #contact .email-row, #contact .contact-info');
+      if (contactItems.length) {
+        gsap.fromTo(contactItems,
+          { y: 78, autoAlpha: 0, clipPath: 'inset(100% 0 0 0)' },
+          {
+            y: 0,
+            autoAlpha: 1,
+            clipPath: 'inset(0% 0 0 0)',
+            duration: 1.2,
+            stagger: 0.12,
+            ease: 'power4.out',
+            immediateRender: false,
+            scrollTrigger: { trigger: '#contact', start: 'top 82%', once: true },
+            onComplete: () => gsap.set(contactItems, { clearProps: 'opacity,visibility,clipPath,transform' }),
+          });
+      }
+
+      const replayHeroEntrance = () => {
+        if (window.location.hash && window.location.hash !== '#home') return;
+        gsap.timeline({ defaults: { ease: 'power4.out', overwrite: 'auto' } })
+          .fromTo('.hero-heading-meta', { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .75 })
+          .fromTo('.hero-main-word', { y: 60, scaleY: .72, autoAlpha: 0 }, { y: 0, scaleY: 1, autoAlpha: 1, duration: 1.05 }, .08)
+          .fromTo('.hero h1 .outline', { x: -54, scaleX: .75, autoAlpha: 0 }, { x: 0, scaleX: 1, autoAlpha: 1, duration: 1.05 }, .2)
+          .fromTo('.hero-caption', { y: 30, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .8 }, .42);
+      };
+      handleHashChange = () => {
+        if (window.location.hash === '#home') replayHeroEntrance();
+      };
+      handlePageShow = event => {
+        if (event.persisted) replayHeroEntrance();
+      };
+      window.addEventListener('hashchange', handleHashChange);
+      window.addEventListener('pageshow', handlePageShow);
 
       const statCells = gsap.utils.toArray('#about .stats > div');
       if (statCells.length) {
@@ -136,6 +172,8 @@ export default function App() {
 
     return () => {
       document.body.classList.remove('is-opening');
+      if (handleHashChange) window.removeEventListener('hashchange', handleHashChange);
+      if (handlePageShow) window.removeEventListener('pageshow', handlePageShow);
       motionMedia.revert();
       context.revert();
     };

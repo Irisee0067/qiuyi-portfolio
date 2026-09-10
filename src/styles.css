@@ -269,6 +269,11 @@
 /* Keep portfolio artwork colour accurate; interaction changes geometry only. */
 .project-image>img,.project-image:hover>img,.dialog-image>img,.gallery-image-link img{filter:none!important}
 
+/* A single filtered project uses the same full-width format as the book project. */
+.projects.is-filtered{grid-template-columns:1fr}
+.projects.is-filtered .project-card{grid-column:1/-1}
+.projects.is-filtered .project-image{aspect-ratio:2.15/1}
+
 .secondary-awards{display:grid;grid-template-columns:minmax(160px,.3fr) 1fr;gap:clamp(28px,5vw,80px);margin-top:34px;padding:19px 4px 0;border-top:1px solid rgba(23,23,21,.32);color:rgba(23,23,21,.62)}
 .secondary-awards>.eyebrow{font-size:.7rem;color:rgba(23,23,21,.5)}
 .secondary-awards p{display:grid;grid-template-columns:130px 1fr;gap:18px;margin:0;padding:7px 0;border-bottom:1px dotted rgba(23,23,21,.2);font-family:Georgia,"Songti SC",serif;font-size:.82rem;line-height:1.55}
@@ -372,6 +377,7 @@
 @media(max-width:700px){
   .project-dialog{width:calc(100% - 18px);height:95vh;max-height:95vh}
   .project-dialog .dialog-image{aspect-ratio:1.25/1;min-height:0}
+  .projects.is-filtered .project-image{aspect-ratio:1.28/1}
 }
 
 @media(prefers-reduced-motion:reduce){
