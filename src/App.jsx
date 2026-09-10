@@ -163,7 +163,7 @@ export default function App() {
         <div className="hero-content container">
           <div className="hero-heading-meta"><div className="eyebrow hero-eyebrow"><span className="status-dot" /> PORTFOLIO / 01</div><span>VISUAL · BRAND · AI</span></div>
           <h1 id="hero-heading"><span className="hero-main-word">DESIGN</span><span className="outline">BEYOND<span className="orange hero-period">.</span></span></h1>
-          <div className="hero-caption"><span className="caption-line" /><div><p>让想象，成为可见。</p><span>顾邱宜 · 视觉设计师 / AI 设计师 / 品牌设计师</span></div></div>
+          <div className="hero-caption"><span className="caption-line" /><div><p>让想象，成为可见。</p><span>设计师</span></div></div>
         </div>
         <div className="hero-bottom container"><a className="scroll-link" href="#about"><span className="scroll-icon"><ArrowDown size={15} /></span>向下探索 <span className="muted">SCROLL TO DISCOVER</span></a><span className="hero-index">PORTFOLIO — 2026 <span className="orange">©</span></span></div>
         <span className="hero-side">BASED IN HUZHOU, CHINA</span>
