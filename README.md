@@ -20,6 +20,18 @@ npm run preview
 
 开发地址通常为 http://127.0.0.1:5173/ 。`dist/` 为可部署的静态网站。
 
+## GitHub Pages 部署
+
+本仓库已包含 `.github/workflows/deploy-pages.yml`。上传到 GitHub 后，每次向 `main` 分支提交代码都会自动安装依赖、构建并发布网站。
+
+首次使用时，在 GitHub 仓库中打开 **Settings → Pages**，将 **Build and deployment / Source** 设为 **GitHub Actions**。随后打开仓库的 **Actions** 页面，等待 `Deploy portfolio to GitHub Pages` 运行完成。公开网址通常为：
+
+```text
+https://你的GitHub用户名.github.io/仓库名/
+```
+
+课程提交时直接提交整个仓库即可。仓库包含 `src/`、`public/`、`package.json`、`pnpm-lock.yaml` 与部署工作流；`node_modules/` 和 `dist/` 会由 GitHub 自动生成，因此按行业惯例不上传。
+
 此电脑已安装项目依赖。直接双击 `打开个人网站.cmd`，脚本会在后台启动本地网站并自动打开浏览器；重复双击不会创建多个服务。也可以在 PowerShell 运行 `./start-preview.ps1`，或使用 `./start-preview.ps1 -NoBrowser` 仅启动服务。
 
 ## 已完成
