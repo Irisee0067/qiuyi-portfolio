@@ -1,11 +1,14 @@
 import HalftoneReveal from './HalftoneReveal.jsx';
 import DotGrid from './DotGrid.jsx';
+import { assetUrl } from './assetUrl.js';
+
+const heroBackground = assetUrl('assets/hero-background-palette.webp');
 
 export default function HeroVideo() {
   return <div className="hero-media hero-ripple">
-    <img className="hero-poster" src="/assets/hero-background-palette.webp" alt="" aria-hidden="true" fetchPriority="high" decoding="async" />
+    <img className="hero-poster" src={heroBackground} alt="" aria-hidden="true" fetchPriority="high" decoding="async" />
     <HalftoneReveal
-      src="/assets/hero-background-palette.webp"
+      src={heroBackground}
       inkColor="#79a9c4"
       paperColor="#eeeadd"
       mode="duotone"
